@@ -14,6 +14,7 @@ import static junit.framework.TestCase.assertTrue;
 import static org.junit.Assert.assertFalse;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.verifyNoMoreInteractions;
 import static org.mockito.Mockito.when;
 
 @RunWith(MockitoJUnitRunner.class)
@@ -30,11 +31,12 @@ public class SpellCheckerTest {
         List<String> wordList = Lists.newArrayList("hello", "test");
         spellChecker.addAll(wordList);
         verify(mockBloomFilter, times(1)).addAll(wordList);
+        verifyNoMoreInteractions(mockBloomFilter);
 
     }
 
     @Test
-    public void testIfSpellCheckerReturnsBloomFiltersResponse() {
+    public void testIfSpellCheckerMimicsBloomFiltersResponse() {
         SpellChecker spellChecker = new SpellCheckerImpl(mockBloomFilter);
 
         when(mockBloomFilter.mightContain("hello")).thenReturn(true);
