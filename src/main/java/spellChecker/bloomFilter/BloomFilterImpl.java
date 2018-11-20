@@ -1,7 +1,7 @@
-package bloomFilter;
+package spellChecker.bloomFilter;
 
-import bloomFilter.api.BloomFilter;
-import bloomFilter.api.HashGenerator;
+import spellChecker.bloomFilter.api.BloomFilter;
+import spellChecker.bloomFilter.api.HashGenerator;
 
 import javax.inject.Inject;
 import java.util.List;

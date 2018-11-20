@@ -1,4 +1,4 @@
-package bloomFilter.api;
+package spellChecker.bloomFilter.api;
 
 import java.util.List;
 

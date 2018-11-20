@@ -1,14 +1,15 @@
 package bloomFilter;
 
-import bloomFilter.api.HashGenerator;
 import com.google.common.collect.Lists;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.mockito.runners.MockitoJUnitRunner;
+import spellChecker.bloomFilter.BloomFilterImpl;
+import spellChecker.bloomFilter.api.HashGenerator;
 
-import static junit.framework.TestCase.assertTrue;
 import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.verifyNoMoreInteractions;
