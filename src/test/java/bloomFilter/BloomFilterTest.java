@@ -20,11 +20,12 @@ public class BloomFilterTest {
     @Mock
     HashGenerator<String> mockHashGenerator;
 
-    /* Bits that will be set for test words hello, world and test
-    hello - 0000011
-    world - 0000110
-    test  - 0001100
-     */
+    /*
+       Bits that will be set for test words hello, world and test
+       hello - 0000011
+       world - 0000110
+       test  - 0001100
+    */
 
 
     @Test
