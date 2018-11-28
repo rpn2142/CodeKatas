@@ -31,7 +31,9 @@ public class SixLetterWordFinderTest {
     public static Collection primeNumbers() {
         return Arrays.asList(new Object[][]{
                 {new SixLetterCompositeWordFinderReadable()},
-                {new SixLetterCompositeWordFinderOptimized()}
+                {new SixLetterCompositeWordFinderOptimizedNoStreams()},
+                {new SixLetterCompositeWordFinderOptimizedUsingStreams()}
+
         });
     }
 

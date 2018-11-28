@@ -7,10 +7,10 @@ import java.util.Set;
 
 import static com.google.common.collect.Iterables.isEmpty;
 
-public class SixLetterCompositeWordFinderOptimized implements SixLetterCompositeWordFinder {
+public class SixLetterCompositeWordFinderOptimizedNoStreams implements SixLetterCompositeWordFinder {
     private Set<String> dictionary;
 
-    public SixLetterCompositeWordFinderOptimized() {
+    public SixLetterCompositeWordFinderOptimizedNoStreams() {
         this.dictionary = new HashSet<>();
     }
 

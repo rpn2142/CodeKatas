@@ -1,7 +1,7 @@
 package benchmark;
 
 import conflictingObjectives.SixLetterCompositeWordFinder;
-import conflictingObjectives.SixLetterCompositeWordFinderOptimized;
+import conflictingObjectives.SixLetterCompositeWordFinderOptimizedNoStreams;
 import conflictingObjectives.SixLetterCompositeWordFinderReadable;
 import org.apache.commons.io.FileUtils;
 import org.openjdk.jmh.annotations.Benchmark;
@@ -28,7 +28,7 @@ public class Test {
     public void initOptimized() throws IOException {
         Set<String> largeDictionary = new HashSet<>(FileUtils.readLines(new File(getClass().getClassLoader().getResource("wordlist.txt").getFile()),
                 "utf-8"));
-        SixLetterCompositeWordFinder sixLetterCompositeWordFinder = new SixLetterCompositeWordFinderOptimized();
+        SixLetterCompositeWordFinder sixLetterCompositeWordFinder = new SixLetterCompositeWordFinderOptimizedNoStreams();
         sixLetterCompositeWordFinder.loadDictionary(largeDictionary);
         sixLetterCompositeWordFinder.getSixLetterCompositeWords().size();
 
