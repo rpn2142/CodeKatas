@@ -23,9 +23,9 @@ public class BloomFilterTest {
 
     /*
        Bits that will be set for test words hello, world and test
-       hello - 0000011
-       world - 0000110
-       test  - 0001100
+       hello - 1,2
+       world - 2,4
+       test  - 4,8
     */
 
 

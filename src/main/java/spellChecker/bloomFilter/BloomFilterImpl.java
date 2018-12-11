@@ -4,16 +4,20 @@ import spellChecker.bloomFilter.api.BloomFilter;
 import spellChecker.bloomFilter.api.HashGenerator;
 
 import javax.inject.Inject;
+import java.util.Arrays;
+import java.util.BitSet;
 import java.util.List;
 
 public class BloomFilterImpl<T> implements BloomFilter<T> {
-
+    private int bitSetLength;
     private HashGenerator<T> hashGenerator;
-    private int bitVector;
+    private BitSet bitSet;
 
     @Inject
     public BloomFilterImpl(HashGenerator<T> hashGenerator) {
         this.hashGenerator = hashGenerator;
+        bitSetLength = 1024;
+        bitSet = new BitSet(bitSetLength);
     }
 
     @Override
@@ -27,33 +31,21 @@ public class BloomFilterImpl<T> implements BloomFilter<T> {
     @Override
     public boolean mightContain(T item) {
         int[] hashes = this.hashGenerator.generateHashes(item);
-        for (int hash : hashes) {
-            if (!containedInBitVector(hash)) {
-                return false;
-            }
-        }
-        return true;
+        return !isAnyPositionNotSet(hashes);
+    }
+
+    private boolean isAnyPositionNotSet(int[] hashes) {
+        return Arrays.stream(hashes)
+                .anyMatch(this::isNotSet);
     }
 
     private void recordAllHashes(int[] hashes) {
-        for (int hash : hashes) {
-            bitVector |= hash;
-        }
+        Arrays.stream(hashes)
+                .map(hash -> hash % bitSet.size())
+                .forEach(bitSet::set);
     }
 
-    private boolean containedInBitVector(int item) {
-        int hash = this.bitVector;
-
-        while (item > 0) {
-            int itemBit = item & 1;
-            int hashBit = hash & 1;
-            if (itemBit == 1 && hashBit != 1) {
-                return false;
-            }
-            item >>= 1;
-            hash >>= 1;
-        }
-
-        return true;
+    private boolean isNotSet(int position) {
+        return !bitSet.get(position % bitSet.size());
     }
 }
