@@ -10,17 +10,17 @@ public class RackTest {
     @Test
     public void testBallRetrieval() {
         Rack rack = new Rack();
-        assertEquals(Lists.newArrayListWithExpectedSize(0), rack.getBalls());
+        assertEquals(Lists.newArrayListWithExpectedSize(0), rack.getSelectedBallsInSortedOrder());
 
-        rack.add(20);
-        assertEquals(Lists.newArrayList(20), rack.getBalls());
+        rack.selectBall(20);
+        assertEquals(Lists.newArrayList(20), rack.getSelectedBallsInSortedOrder());
 
-        rack.add(10);
-        rack.add(20);
-        assertEquals(Lists.newArrayList(10, 20), rack.getBalls());
+        rack.selectBall(10);
+        rack.selectBall(20);
+        assertEquals(Lists.newArrayList(10, 20), rack.getSelectedBallsInSortedOrder());
 
-        rack.add(30);
-        assertEquals(Lists.newArrayList(10, 20, 30), rack.getBalls());
+        rack.selectBall(30);
+        assertEquals(Lists.newArrayList(10, 20, 30), rack.getSelectedBallsInSortedOrder());
 
     }
 }

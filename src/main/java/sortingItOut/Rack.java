@@ -12,13 +12,13 @@ public class Rack {
         selectedBalls = new BitSet(60);
     }
 
-    public List<Integer> getBalls() {
+    public List<Integer> getSelectedBallsInSortedOrder() {
         return selectedBalls.stream()
                 .boxed()
                 .collect(Collectors.toList());
     }
 
-    public void add(int i) {
-        selectedBalls.set(i);
+    public void selectBall(int index) {
+        selectedBalls.set(index);
     }
 }
