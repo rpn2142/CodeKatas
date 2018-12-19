@@ -29,7 +29,11 @@ public class SortingCharacters {
     private String buildResultString() {
         StringBuilder resultString = new StringBuilder();
         for( int i=0; i<charIndex2CountMap.length; i++) {
-            resultString.append(Strings.repeat((char)(i+'a'), charIndex2CountMap[i]));
+
+            char character = (char) ('a' + i);
+            int count = charIndex2CountMap[i];
+
+            resultString.append( Strings.repeat(character, count) );
         }
         return resultString.toString();
     }
