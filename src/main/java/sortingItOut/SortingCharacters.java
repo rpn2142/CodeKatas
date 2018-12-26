@@ -11,11 +11,11 @@ public class SortingCharacters {
     }
 
     public String sorted(String str) {
-        computeCharCount(str);
-        return buildResultString();
+        buildCharIndex2CountMap(str);
+        return buildSortedString();
     }
 
-    private void computeCharCount(String str) {
+    private void buildCharIndex2CountMap(String str) {
         str.toLowerCase()
                 .chars()
                 .filter( Character::isLetter )
@@ -26,7 +26,7 @@ public class SortingCharacters {
         return charIndex2CountMap[c-'a']++;
     }
 
-    private String buildResultString() {
+    private String buildSortedString() {
         StringBuilder resultString = new StringBuilder();
         for( int i=0; i<charIndex2CountMap.length; i++) {
 
