@@ -19,7 +19,7 @@ public class SortingCharacters {
         str.toLowerCase()
                 .chars()
                 .filter( Character::isLetter )
-                .forEach(this::incrementIndexCount);
+                .forEach( this::incrementIndexCount );
     }
 
     private int incrementIndexCount(int c) {
